@@ -8,6 +8,7 @@
 //     console.log(data);
 // })
 
+
 //.THEN version
 // const fsPromises = require('fs').promises;
 
@@ -18,16 +19,44 @@
 //         console.log(err);
 //     });
 
-//Async Await
+// .Then COPY-ER (couldn't get a 'new copy reader' to work)
 const fsPromises = require('fs').promises;
 
-async function textReader() {
-    try{
-        const coolText = await fsPromises.readFile('./cooltext.md', 'utf-8');
-        console.log(coolText);
-    } catch(err) {
-        console.log(err);
-    }
-}
+fsPromises.readFile('./cooltext.md', 'utf-8')
+   .then(data => {fsPromises.writeFile('./coolertext.md', data)
+    });
 
-textReader();
+// fsPromises.readFile('./coolertext.md', 'utf-8')
+//     .then(cooler => console.log(cooler));
+
+
+
+
+//Async Await
+// const fsPromises = require('fs').promises;
+
+// async function textReader() {
+//     try{
+//         const coolText = await fsPromises.readFile('./cooltext.md', 'utf-8');
+//         console.log(coolText);
+//     } catch(err) {
+//         console.log(err);
+//     }
+// }
+
+// textReader();
+
+// async function textWriter() {
+    
+//         await fsPromises.writeFile('./newtext.md', 'woooohoooooo!!');
+       
+
+//         try{
+//             const newText = await fsPromises.readFile('./newtext.md', 'utf-8');
+//             console.log(newText);
+//         } catch(err) {
+//             console.log(err);
+//         }
+//     }
+
+// textWriter();
